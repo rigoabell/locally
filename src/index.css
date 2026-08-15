@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-sans);
+  background: #fafafa;
+}
+
+.dark body {
+  background: #09090b;
+}
+
+#root {
+  min-height: 100svh;
+}

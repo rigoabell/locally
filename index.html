@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#7c3aed" />
+    <title>Locally — Free browser tools that stay on your device</title>
+    <meta
+      name="description"
+      content="A free, fully client-side toolkit. QR codes, passwords, JSON, image compression, and more. Your data stays on your device. Nothing is uploaded."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Locally" />
+    <meta property="og:title" content="Locally — Free browser tools that stay on your device" />
+    <meta
+      property="og:description"
+      content="Free tools that run entirely in your browser. No accounts, no uploads, no paid APIs."
+    />
+    <meta property="og:image" content="https://rigoabell.github.io/locally/og-image.png" />
+    <meta property="og:url" content="https://rigoabell.github.io/locally/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Locally — Free browser tools that stay on your device" />
+    <meta
+      name="twitter:description"
+      content="Free tools that run entirely in your browser. Your data stays on your device. Nothing is uploaded."
+    />
+    <meta name="twitter:image" content="https://rigoabell.github.io/locally/og-image.png" />
+    <link rel="canonical" href="https://rigoabell.github.io/locally/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Locally",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Free browser tools that run entirely on your device."
+      }
+    </script>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var dark =
+            stored === 'dark' ||
+            (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          if (dark) document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
