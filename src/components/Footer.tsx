@@ -23,6 +23,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link to="/usage" className="text-zinc-600 hover:text-violet-700 dark:text-zinc-400 dark:hover:text-violet-300">
+                Usage
+              </Link>
+            </li>
+            <li>
               <Link to="/privacy" className="text-zinc-600 hover:text-violet-700 dark:text-zinc-400 dark:hover:text-violet-300">
                 Privacy
               </Link>

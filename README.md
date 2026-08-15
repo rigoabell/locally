@@ -50,6 +50,10 @@ npm run preview   # serve the production build locally
 
 If you rename the repository, update `VITE_BASE` and `VITE_SITE_URL` in the workflow, plus the Open Graph URLs in `index.html` and `public/robots.txt`.
 
+### Usage meters
+
+Open `/usage` on the live site to compare current use against GitHub Pages soft limits (100 GB bandwidth / month, 10 builds / hour, 1 GB site size). Live GitHub checks run from your browser only when you click refresh. An optional token is stored in `localStorage` on your device.
+
 ### Cloudflare Pages
 
 1. Create a project from this repository.

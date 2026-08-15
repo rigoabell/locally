@@ -1,4 +1,4 @@
-import { copyFileSync, writeFileSync } from 'node:fs'
+import { copyFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
@@ -28,7 +28,7 @@ function staticSitePlugins() {
         /\/$/,
         '',
       )
-      const paths = ['/', '/tools', '/about', '/privacy', ...toolSlugs.map((slug) => `/tools/${slug}`)]
+      const paths = ['/', '/tools', '/about', '/privacy', '/usage', ...toolSlugs.map((slug) => `/tools/${slug}`)]
       const lastmod = new Date().toISOString().slice(0, 10)
       const urls = paths
         .map(
@@ -48,8 +48,40 @@ ${urls}
 </urlset>
 `,
       )
+
+      const distStats = folderSize(dist)
+      writeFileSync(
+        resolve(dist, 'usage.json'),
+        `${JSON.stringify(
+          {
+            generatedAt: new Date().toISOString(),
+            distBytes: distStats.bytes,
+            fileCount: distStats.files,
+          },
+          null,
+          2,
+        )}\n`,
+      )
     },
   }
+}
+
+function folderSize(dir: string): { bytes: number; files: number } {
+  let bytes = 0
+  let files = 0
+  for (const name of readdirSync(dir)) {
+    const full = resolve(dir, name)
+    const info = statSync(full)
+    if (info.isDirectory()) {
+      const nested = folderSize(full)
+      bytes += nested.bytes
+      files += nested.files
+    } else {
+      bytes += info.size
+      files += 1
+    }
+  }
+  return { bytes, files }
 }
 
 export default defineConfig({
